@@ -36,23 +36,25 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 #### 2. Explain how the final choice of HOG parameters was settled.
 
-I use `GridSearchCV` to find the best C value ranging from 0.5 to 10. I use `LinearSVC` model, so there's no need to adjust the kernel
+The parameters I tested with different color space such as `RGB`, `YUV`, and `YCrCb`. `YCrCb` yields the best performance and accuracy. I also tested a few combinations of orientation, pixels per cell, cells per block. The best accuracy I have achieved is 99.21%.
 
-#### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+#### 3. Describe how a classifier is trained using my selected HOG features and color features.
 
-I trained a linear SVM using...
+I trained a linear SVM using `LinearSVC`. I define the following functions for feature extraction
+- `bin_spatial`: extracts raw pixels
+- `color_hist`: extracts color histogram
+- `get_hog_features`: extracts hog features
 
-###Sliding Window Search
+### Sliding Window Search
 
-#### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+#### 1. Describe how a sliding window search was implemented.
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
-
+I decided to search window positions from y=400 to y=700 at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping that yields the most true positives and least false positives.
 ![alt text][image3]
 
-#### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+#### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
 ---
@@ -60,7 +62,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_result.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -69,11 +71,11 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
+### Here is a frame and its corresponding heatmap:
 
 ![alt text][image5]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from the sixth frame:
 ![alt text][image6]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
