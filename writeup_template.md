@@ -11,7 +11,7 @@ This project involves using opencv and machine learning techniques to detect veh
 
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
+[image2]: ./examples/HOG_example.png
 [image3]: ./examples/sliding_window.png
 [image4]: ./examples/bboxes_and_heat.png
 [image5]: ./examples/labels_map.png
@@ -50,13 +50,13 @@ I trained a linear SVM using `LinearSVC`. I define the following functions for f
 #### 1. Describe how a sliding window search was implemented.
 
 I decided to search window positions from y=400 to y=700 at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping that yields the most true positives and least false positives.
-![alt text][image3]
 
 #### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
 
 Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
-![alt text][image4]
+![alt text][image3]
+
 ---
 
 ### Video Implementation
@@ -73,14 +73,10 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here is a frame and its corresponding heatmap:
 
-![alt text][image5]
+![alt text][image4]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
-![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the frame:
-![alt text][image7]
-
+![alt text][image5]
 
 
 ---
