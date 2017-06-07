@@ -73,13 +73,11 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here is a frame and its corresponding heatmap:
 
+Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
 ![alt text][image5]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
+Here the resulting bounding boxes are drawn onto the frame:
 ![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the frame:
-![alt text][image7]
 
 
 
