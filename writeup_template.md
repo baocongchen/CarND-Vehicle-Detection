@@ -12,7 +12,7 @@ This project involves using opencv and machine learning techniques to detect veh
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
 [image2]: ./examples/HOG_example.png
-[image3]: ./examples/sliding_window.png
+[image3]: ./examples/sliding_windows.png
 [image4]: ./examples/bboxes_and_heat.png
 [image5]: ./examples/labels_map.png
 [image6]: ./examples/output_bboxes.png
@@ -71,11 +71,10 @@ I recorded the positions of positive detections in each frame of the video. From
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here is a frame and its corresponding heatmap:
-
+Here is a frame and its corresponding heatmap:
 ![alt text][image4]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
+Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
 ![alt text][image5]
 
 
