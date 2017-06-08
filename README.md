@@ -13,8 +13,6 @@ This project involves using opencv and machine learning techniques to detect veh
 [image1]: ./examples/car_not_car.png
 [image2]: ./examples/HOG_example.jpg
 [image3]: ./examples/sliding_window.png
-[image2]: ./examples/HOG_example.png
-[image3]: ./examples/sliding_windows.png
 [image4]: ./examples/bboxes_and_heat.png
 [image5]: ./examples/labels_map.png
 [image6]: ./examples/output_bboxes.png
@@ -59,19 +57,6 @@ I decided to search window positions from y=400 to y=700 at different scales. Th
 Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
-
-### Sliding Window Search
-
-#### 1. Describe how a sliding window search was implemented.
-
-I decided to search window positions from y=400 to y=700 at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping that yields the most true positives and least false positives.
-
-#### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
-
-Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
-
-![alt text][image3]
-
 ---
 
 ### Video Implementation
@@ -97,11 +82,6 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ![alt text][image7]
 
 
-Here is a frame and its corresponding heatmap:
-![alt text][image4]
-
-Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
-![alt text][image5]
 
 ---
 
@@ -110,4 +90,3 @@ Here is the output of `scipy.ndimage.measurements.label()` on the integrated hea
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail?  What could you do to make it more robust?
 
 I could have improved prediction accuracy if I had augmented the data. An accuracy of 99.21% is not good enough for practical application on the road. Although I already used tracking method to smooth the boxes, I still encountered some blobs as showed in the video. I have not tested on different environments, driving conditions such as dark night, intensive sun light, snow...etc. 
-
