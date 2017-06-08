@@ -29,7 +29,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=7`, `pixels_per_cell=(8, 8)` and `cells_per_block=(1, 1)`:
+Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(1, 1)`:
 
 
 ![alt text][image2]
@@ -54,9 +54,8 @@ I decided to search window positions from y=400 to y=700 at different scales. Th
 
 #### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
 
-Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  
 
-![alt text][image4]
 ---
 
 ### Video Implementation
@@ -73,13 +72,13 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here is a frame and its corresponding heatmap:
 
-![alt text][image5]
+![alt text][image4]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
-![alt text][image6]
+![alt text][image5]
 
 ### Here the resulting bounding boxes are drawn onto the frame:
-![alt text][image7]
+![alt text][image6]
 
 
 
