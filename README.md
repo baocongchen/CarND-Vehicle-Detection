@@ -11,8 +11,13 @@ This project involves using opencv and machine learning techniques to detect veh
 
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
+<<<<<<< HEAD
 [image2]: ./examples/HOG_example.jpg
 [image3]: ./examples/sliding_window.png
+=======
+[image2]: ./examples/HOG_example.png
+[image3]: ./examples/sliding_windows.png
+>>>>>>> 2a241d721c7fb1ddd2983ab0ebe039986f6727b9
 [image4]: ./examples/bboxes_and_heat.png
 [image5]: ./examples/labels_map.png
 [image6]: ./examples/output_bboxes.png
@@ -44,6 +49,7 @@ I trained a linear SVM using `LinearSVC`. I define the following functions for f
 - `bin_spatial`: extracts raw pixels
 - `color_hist`: extracts color histogram
 - `get_hog_features`: extracts hog features
+<<<<<<< HEAD
 
 ### Sliding Window Search
 
@@ -57,6 +63,21 @@ I decided to search window positions from y=400 to y=700 at different scales. Th
 Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
+=======
+
+### Sliding Window Search
+
+#### 1. Describe how a sliding window search was implemented.
+
+I decided to search window positions from y=400 to y=700 at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping that yields the most true positives and least false positives.
+
+#### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
+
+Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+
+![alt text][image3]
+
+>>>>>>> 2a241d721c7fb1ddd2983ab0ebe039986f6727b9
 ---
 
 ### Video Implementation
@@ -71,6 +92,7 @@ I recorded the positions of positive detections in each frame of the video. From
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
+<<<<<<< HEAD
 ### Here is a frame and its corresponding heatmap:
 
 ![alt text][image5]
@@ -82,6 +104,14 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ![alt text][image7]
 
 
+=======
+Here is a frame and its corresponding heatmap:
+![alt text][image4]
+
+Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from a frame:
+![alt text][image5]
+
+>>>>>>> 2a241d721c7fb1ddd2983ab0ebe039986f6727b9
 
 ---
 
