@@ -12,7 +12,7 @@ This project involves using opencv and machine learning techniques to detect veh
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
 [image2]: ./examples/HOG_example.png
-[image3]: ./examples/sliding_window.png
+[image3]: ./examples/sliding_windows.png
 [image4]: ./examples/bboxes_and_heat.png
 [image5]: ./examples/labels_map.png
 [image6]: ./examples/output_bboxes.png
