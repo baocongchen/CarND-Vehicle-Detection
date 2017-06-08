@@ -36,7 +36,7 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 #### 2. Explain how the final choice of HOG parameters was settled.
 
-The parameters I tested with different color space such as `RGB`, `YUV`, and `YCrCb`. `YCrCb` yields the best performance and accuracy. I also tested a few combinations of orientation, pixels per cell, cells per block. The best accuracy I have achieved is 99.21%.
+I used `GridSearchCV` to choose the best C value among a set of values `[0.5, 1, 10]` for my classifier. `best_params_` indicated that 0.5 was the best choice. The parameters I tested with different color space such as `RGB`, `YUV`, and `YCrCb`. `YCrCb` yields the best computing performance and test accuracy. I also tested a few combinations of orientation, pixels per cell, cells per block. The best accuracy I have achieved is 99.1%.
 
 #### 3. Describe how a classifier is trained using my selected HOG features and color features.
 
@@ -49,12 +49,12 @@ I trained a linear SVM using `LinearSVC`. I define the following functions for f
 
 #### 1. Describe how a sliding window search was implemented.
 
-I decided to search window positions from y=400 to y=700 at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping that yields the most true positives and least false positives.
+I decided to search window positions from (x,y)=(600,400) to (x,y)=(1280,700) at different scales. The images of these windows are passed to prediction model to detect cars. I choose xy overlapping, ranging from 0.5 to 0.75, that yields the most true positives and least false positives.
 ![alt text][image3]
 
 #### 2. Show some examples of test images to demonstrate how the pipeline is working, and what I have done to optimize the performance of the classifier.
 
-Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  
+Ultimately I searched on four scales:(80,64), (120,96), (160,128), (242,194) using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.
 
 ---
 
@@ -80,12 +80,10 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ### Here the resulting bounding boxes are drawn onto the frame:
 ![alt text][image6]
 
-
-
 ---
 
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail?  What could you do to make it more robust?
 
-I could have improved prediction accuracy if I had augmented the data. An accuracy of 99.21% is not good enough for practical application on the road. Although I already used tracking method to smooth the boxes, I still encountered some blobs as showed in the video. I have not tested on different environments, driving conditions such as dark night, intensive sun light, snow...etc. 
+I could have improved prediction accuracy if I had augmented the data. An accuracy of 99.1% is not good enough for practical application on the road. Although I already used tracking method to smooth the boxes, I still encountered some blobs as showed in the video. I have not tested on different environments, driving conditions such as dark night, intensive sun light, snow...etc. 
